@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CV — Ibrahima Kourouma</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a2e;
+      --paper: #f7f4ef;
+      --gold: #b8952a;
+      --gold-light: #e8d5a3;
+      --muted: #8a8070;
+      --line: #d8d0c4;
+    }
+
+    body {
+      background: #e8e4dd;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--ink);
+      min-height: 100vh;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .page {
+      background: var(--paper);
+      width: 100%;
+      max-width: 860px;
+      box-shadow: 0 20px 80px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.1);
+      animation: rise 0.6s ease both;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Gold stripe top */
+    .page::before {
+      content: '';
+      display: block;
+      height: 6px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    }
+
+    /* ─── HEADER ─── */
+    .header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      padding: 48px 56px 36px;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 56px;
+      width: 60px; height: 3px;
+      background: var(--gold);
+    }
+
+    .header-left {}
+
+    .initials {
+      width: 72px; height: 72px;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .title {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .tagline {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 440px;
+      font-weight: 300;
+    }
+
+    .contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-end;
+      padding-top: 8px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .contact-item .dot {
+      width: 5px; height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ─── BODY ─── */
+    .body {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+    }
+
+    /* Main column */
+    .main {
+      padding: 40px 48px 48px 56px;
+      border-right: 1px solid var(--line);
+    }
+
+    /* Side column */
+    .side {
+      padding: 40px 32px 48px;
+      background: #f0ece4;
+    }
+
+    /* ─── SECTION ─── */
+    .section { margin-bottom: 36px; }
+    .section:last-child { margin-bottom: 0; }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    /* Entry */
+    .entry { margin-bottom: 24px; }
+    .entry:last-child { margin-bottom: 0; }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+
+    .entry-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .entry-date {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 300;
+      white-space: nowrap;
+    }
+
+    .entry-sub {
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .entry-desc {
+      font-size: 13.5px;
+      color: #4a4540;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* Skills list */
+    .skill-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 13.5px;
+      color: #4a4540;
+      line-height: 1.5;
+    }
+
+    .skill-item::before {
+      content: '';
+      width: 4px; height: 4px;
+      background: var(--gold);
+      border-radius: 50%;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    /* Side items */
+    .side-item {
+      margin-bottom: 20px;
+    }
+
+    .side-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .side-value {
+      font-size: 14px;
+      color: var(--ink);
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    /* Language bars */
+    .lang-item { margin-bottom: 14px; }
+    .lang-name { font-size: 13.5px; color: var(--ink); margin-bottom: 5px; display: flex; justify-content: space-between; }
+    .lang-level { font-size: 11px; color: var(--muted); }
+    .lang-bar { height: 3px; background: var(--line); border-radius: 2px; }
+    .lang-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); border-radius: 2px; transition: width 0.8s ease; }
+
+    /* Interest pills */
+    .pill {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 11px;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      margin: 4px 4px 4px 0;
+    }
+
+    @media (max-width: 640px) {
+      .header { grid-template-columns: 1fr; padding: 32px 28px 28px; }
+      .contacts { align-items: flex-start; }
+      .body { grid-template-columns: 1fr; }
+      .main { padding: 28px 28px; border-right: none; border-bottom: 1px solid var(--line); }
+      .side { padding: 28px 28px; }
+      .name { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="initials">IK</div>
+      <div class="name">Ibrahima Kourouma</div>
+      <div class="title">Étudiant en Génie Informatique</div>
+      <p class="tagline">Personne sérieuse, dynamique et motivée, dotée d'un bon sens d'organisation et capable de travailler aussi bien seule qu'en équipe. Apte à respecter les consignes et à fournir un travail de qualité.</p>
+    </div>
+    <div class="contacts">
+      <div class="contact-item"><span class="dot"></span>+224 629 80 62 62</div>
+      <div class="contact-item"><span class="dot"></span>kouroumaibrahima932@gmail.com</div>
+      <div class="contact-item"><span class="dot"></span>Guinée</div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- MAIN -->
+    <div class="main">
+
+      <div class="section">
+        <div class="section-title">Formation</div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-title">3e année — Génie Informatique</div>
+            <div class="entry-date">2025 – 2026</div>
+          </div>
+          <div class="entry-sub">Université KOFI ANNAN de Guinée</div>
+          <div class="entry-desc">Spécialisation en développement logiciel, réseaux et systèmes d'information.</div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <div class="entry-title">Baccalauréat Unique</div>
+            <div class="entry-date">2022 – 2023</div>
+          </div>
+          <div class="entry-sub">Groupe Scolaire HABIBATA TOUNKARA</div>
+          <div class="entry-desc">Option : Sciences Mathématiques.</div>
+        </div>
+
+      </div>
+
+      <div class="section">
+        <div class="section-title">Compétences</div>
+
+        <div class="skill-item">Maîtrise des outils bureautiques : Word, Excel, Access à RMS (Racine Management Services)</div>
+        <div class="skill-item">Bonne capacité d'adaptation</div>
+        <div class="skill-item">Esprit d'équipe et de responsabilité</div>
+        <div class="skill-item">Initié à l'outil OBD2 (diagnostic électronique automobile)</div>
+        <div class="skill-item">Rapidité et efficacité dans l'exécution des tâches</div>
+        <div class="skill-item">Respect des consignes et bonne présentation</div>
+      </div>
+
+    </div>
+
+    <!-- SIDE -->
+    <div class="side">
+
+      <div class="section">
+        <div class="section-title">Langues</div>
+
+        <div class="lang-item">
+          <div class="lang-name"><span>Français</span><span class="lang-level">Bon</span></div>
+          <div class="lang-bar"><div class="lang-fill" style="width:85%"></div></div>
+        </div>
+        <div class="lang-item">
+          <div class="lang-name"><span>Anglais</span><span class="lang-level">Intermédiaire</span></div>
+          <div class="lang-bar"><div class="lang-fill" style="width:55%"></div></div>
+        </div>
+        <div class="lang-item">
+          <div class="lang-name"><span>Malinké</span><span class="lang-level">Bon</span></div>
+          <div class="lang-bar"><div class="lang-fill" style="width:85%"></div></div>
+        </div>
+        <div class="lang-item">
+          <div class="lang-name"><span>Soussou</span><span class="lang-level">Moyen</span></div>
+          <div class="lang-bar"><div class="lang-fill" style="width:45%"></div></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Qualités</div>
+        <div class="skill-item">Travail bien fait</div>
+        <div class="skill-item">Ponctualité</div>
+        <div class="skill-item">Sérieux & rigueur</div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Intérêts</div>
+        <span class="pill">Apprentissage</span>
+        <span class="pill">Vie associative</span>
+        <span class="pill">Informatique</span>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
